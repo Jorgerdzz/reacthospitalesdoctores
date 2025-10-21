@@ -10,13 +10,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import MenuHospitales from './components/MenuHospitales';
 import Home from './components/Home';
+import Router from './components/Router';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <MenuHospitales />
-    <Home />
-  </React.StrictMode>
+  <div style={{margin: "auto", width: '50%'}}>
+    <Router />
+  </div>
+    
 );
 
 // If you want to start measuring performance in your app, pass a function
