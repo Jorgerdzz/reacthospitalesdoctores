@@ -8,7 +8,8 @@ export default class MenuHospitales extends Component {
   urlHospitales = Global.apiHospitales
 
   state = {
-    hospitales: []
+    hospitales: [],
+    idHospital: 0
   }
 
   loadHospitales = () => {
@@ -55,8 +56,6 @@ export default class MenuHospitales extends Component {
                 )
               })
             }
-            
-            <li><a className="dropdown-item" href="#">Another action</a></li>
             <li className="dropdown-divider"></li>
             <li><a className="dropdown-item" href="#">Something else here</a></li>
           </ul>
