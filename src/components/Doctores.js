@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import Global from '../Global';
 import axios from 'axios';
+import DetallesDoctor from './DetallesDoctor';
 
 export default class Doctores extends Component {
 
     urlDoctores = Global.apiDoctores;
 
     state = {
-        doctores: []
+        doctores: [],
+        idDoctor: 0
     }
 
     loadDoctores = () => {
@@ -26,7 +28,16 @@ export default class Doctores extends Component {
     componentDidUpdate = (oldProps) => {
         if(oldProps.idhospital != this.props.idhospital){
             this.loadDoctores();
+            this.setState({
+                idDoctor: 0
+            })
         }
+    }
+
+    seleccionarDoctor = (id) => {
+        this.setState({
+            idDoctor: id
+        })
     }
 
   render() {
@@ -39,6 +50,7 @@ export default class Doctores extends Component {
                     <th>APELLIDO</th>
                     <th>ESPECIALIDAD</th>
                     <th>SALARIO</th>
+                    <th>ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,11 +60,16 @@ export default class Doctores extends Component {
                             <td>{doctor.apellido}</td>
                             <td>{doctor.especialidad}</td>
                             <td>{doctor.salario} €</td>
+                            <td><button onClick={ () => {this.seleccionarDoctor(doctor.idDoctor)}} className='btn btn-success'>Detalles</button></td>
                         </tr>)
                     })
                 }
             </tbody>
         </table>
+        {
+            this.state.doctorSeleccionado != 0 &&
+            <DetallesDoctor iddoctor={this.state.idDoctor}/>
+        }
       </div>
     )
   }

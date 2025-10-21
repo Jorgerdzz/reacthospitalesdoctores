@@ -13,6 +13,7 @@ export default class Router extends Component {
         return <Doctores idhospital={idhospital}/>
     }
 
+
     return (
       <BrowserRouter>
       <MenuHospitales />
